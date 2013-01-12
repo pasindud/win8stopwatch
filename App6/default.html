@@ -1,0 +1,83 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Stop Watch</title>
+
+    <!-- WinJS references  // ;-->
+    <link href="//Microsoft.WinJS.1.0/css/ui-light.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <script>
+
+    var ms = 0;
+    var state = 0;
+    function startstop() {
+        if (state == 0) {
+            state = 1;
+            then = new Date();
+            then.setTime((then.getTime() - ms));
+        } else {
+            state = 0;
+            now = new Date();
+            ms = (now.getTime() - then.getTime());
+            document.stpw.time.value = ms + " ms";
+        }
+    }
+    function swreset() {
+        state = 0;
+        ms = 0;
+        document.stpw.time.value = ms;
+    }
+    function display() {
+        setTimeout("display();", 50);
+        
+        if (state == 1)  {now = new Date();
+            ms = (now.getTime() - then.getTime())/1000 ;
+            document.stpw.time.value = ms+" ms";
+        }
+    }
+    // End -->
+
+    </script>
+
+    <style>
+   
+        #onea {
+        
+        margin-left:10%;
+        margin-top:15%;
+        width: 102.46%;
+        height: 454.71px;
+        }
+     
+      
+     </style>
+
+    <link href="/css/default.css" rel="stylesheet" />
+    <script src="/js/default.js"></script>
+
+</head>
+<body onLoad="display()" style="background-image:url(images/bg.jpg) !important;">
+
+  <h1 class="headerClass">Stop Watch</h1>
+    <div class="mainContent" style="width: 60%; height: 353.37px;">
+    
+            <FORM id="onea"  NAME="stpw">
+ <table>
+             <tr><p style="height: 90px; text-align:center; width: 69.61%; font-size:50px; padding-left:0%;">Time </p> </tr>
+            <tr><p style="width: 80%;"><INPUT TYPE="text"  Name="time" style="height: 128.97px; width:86.52%; font-size:50px; text-align:center; "  ></p> </tr>
+          <tr> <p> <button TYPE="BUTTON"     Name="ssbutton" VALUE="" onClick="startstop()" 
+                style="width: 70%; height: 79.76px; font-size:40px;">Start/Stop</button></p> </tr>
+          <tr> <p> <button TYPE="BUTTON"  NAME="reset" VALUE="" onClick="swreset()" style="width: 70%; font-size:20px; height: 44px;">Reset</button></p> </tr>
+            
+       </table>
+     </FORM>
+   
+   
+       
+    </div> 
+</body>
+</html>
